@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:1080px;height:1350px;overflow:hidden;color:white;font-family:Arial,'DejaVu Sans',sans-serif}
+.poster{position:relative;width:1080px;height:1350px;overflow:hidden;background:radial-gradient(circle at 80% 26%,#10366a 0%,transparent 42%),linear-gradient(157deg,#06152f 0%,#09224b 58%,#081a39 100%)}
+.poster:before{content:"";position:absolute;right:-220px;top:-180px;width:850px;height:470px;background:linear-gradient(125deg,rgba(12,47,100,.3),rgba(29,75,134,.5));transform:rotate(-24deg);border-radius:40%}
+.poster:after{content:"";position:absolute;left:-160px;bottom:112px;width:1120px;height:240px;border-radius:55% 45% 0 0 / 75% 85% 0 0;background:rgba(19,70,125,.28);transform:rotate(-8deg)}
+.header{position:absolute;z-index:2;left:0;right:0;top:0;height:204px;display:flex;align-items:flex-start;gap:24px}
+.brand{width:375px;height:195px;flex:none;background:linear-gradient(145deg,#cb1321,#a91526);border-radius:0 0 48px 0;display:flex;align-items:center;justify-content:center;transform:skewX(-6deg);transform-origin:top left;box-shadow:0 0 28px rgba(0,0,0,.1)}
+.brand-inner{transform:skewX(6deg);width:345px;height:178px;display:flex;justify-content:center;align-items:center;overflow:visible}
+.brand img{width:345px;height:178px;object-fit:contain;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
+.slash{margin-top:70px;flex:none;width:4px;height:89px;background:#fff;transform:skew(-13deg)}
+.category{margin-top:77px;background:linear-gradient(90deg,#e9142a 0 31%,transparent 31%);border:4px solid #e9142a;border-radius:50px;min-width:325px;height:77px;padding:0 27px 0 0;display:flex;align-items:center;justify-content:center;gap:18px;font-size:38px;font-weight:900;letter-spacing:-.5px;white-space:nowrap;text-transform:uppercase}
+.category-icon{display:flex;justify-content:center;align-items:center;width:100px;flex:none}
+.category-icon svg{width:42px;height:42px;fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.photo{position:absolute;z-index:1;left:28px;right:28px;top:188px;height:865px;background:linear-gradient(155deg,#163d70,#244d77 55%,#123052);border:2px solid rgba(211,229,249,.6);border-radius:36px;overflow:hidden}
+.photo img{width:100%;height:100%;display:block;object-fit:cover}
+.placeholder{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;text-align:center;line-height:1.4;padding:55px;color:#cfdcee;font-size:34px;font-weight:700}
+.photo-credit{position:absolute;right:18px;top:18px;padding:8px 13px;font-size:17px;border-radius:7px;background:rgba(5,17,41,.7);color:white;z-index:1;max-width:80%;text-align:right}
+.info{position:absolute;z-index:3;left:28px;right:28px;top:910px;height:314px;padding:25px 38px 24px 60px;background:#fff;color:#07183a;border-radius:37px;box-shadow:0 10px 36px rgba(0,0,0,.23);overflow:hidden}
+.info:before{content:"";position:absolute;left:0;top:0;bottom:0;width:21px;background:#ed162a;transform:skew(-7deg);transform-origin:bottom}
+.title{font-weight:900;font-size:56px;letter-spacing:-1.35px;line-height:1.07;max-height:143px;overflow:hidden;overflow-wrap:break-word}
+.subtitle{margin-top:12px;font-size:26px;line-height:1.23;font-weight:400;color:#2c2c31;max-height:65px;overflow:hidden}
+.meta{position:absolute;left:54px;right:40px;bottom:19px;border-top:2px solid #cdd3dc;padding-top:13px;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:22px;color:#091a3e}
+.meta .source{font-weight:700;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta .date{font-weight:600;white-space:nowrap}
+.skyline{position:absolute;z-index:2;bottom:4px;left:0;width:1080px;height:125px;opacity:.52;pointer-events:none}
+.footer-red{position:absolute;z-index:2;bottom:-100px;right:-110px;width:480px;height:200px;background:#e5192c;border-radius:100% 0 0 0;transform:rotate(-12deg)}
+</style>
+</head>
+<body>
+<main class="poster">
+  <header class="header">
+    <div class="brand"><div class="brand-inner"><img src="logo.png" alt="Ankara'da Ne Yapalım? logosu"></div></div>
+    <div class="slash"></div>
+    <div class="category" id="category-box">
+      <span class="category-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 6h28v35H10zM17 12h14M17 18h14M17 24h5M17 30h5M27 24h5M27 30h5"/></svg></span>
+      <span id="category">GÜNDEM</span>
+    </div>
+  </header>
+  <section class="photo" id="photo">
+    <div class="placeholder" id="placeholder">ÖNİZLEME — HABERE AİT İZİNLİ FOTOĞRAF</div>
+    <div class="photo-credit" id="photoCredit" style="display:none"></div>
+  </section>
+  <section class="info">
+    <div id="title" class="title">Ankara'da Güncel Haber Başlığı</div>
+    <div id="subtitle" class="subtitle">Doğrulanmış haber özeti bu alana gelir.</div>
+    <div class="meta"><span class="source" id="source">Kaynak: Demo</span><span class="date" id="date">24.11.2026</span></div>
+  </section>
+  <svg class="skyline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 184" aria-hidden="true">
+    <g fill="#245c99">
+      <path d="M0 166L0 140L25 140L25 124L44 124L44 146L64 146L64 135L85 135L85 120L106 120L106 151L135 151L135 120L159 120L159 153L173 153L173 101L190 101L190 88L204 88L204 101L224 101L224 155L247 155L247 129L266 129L266 145L287 145L287 111L311 111L311 155L341 155L341 115L361 115L361 96L373 96L373 115L396 115L396 147L416 147L416 130L439 130L439 152L454 152L454 108L475 108L475 149L501 149L501 133L525 133L525 119L548 119L548 151L570 151L570 126L590 126L590 153L610 153L610 116L629 116L629 153L655 153L655 131L680 131L680 155L706 155L706 121L734 121L734 146L761 146L761 106L785 106L785 155L810 155L810 127L839 127L839 150L865 150L865 117L889 117L889 151L911 151L911 98L928 98L928 152L952 152L952 128L977 128L977 154L1003 154L1003 120L1026 120L1026 149L1050 149L1050 135L1080 135L1080 184L0 184Z"/>
+      <path d="M205 162V81H212V68H219V81H228V162M195 97H235V110H195Z"/>
+      <path d="M401 155V102L417 98L432 102V155M394 109L417 85L439 109"/>
+      <path d="M865 151L865 83L859 83L859 72L871 72L871 83L871 151M898 151L898 89L892 89L892 78L904 78L904 89L904 151M835 130Q882 95 927 130L927 151L835 151Z"/>
+    </g>
+    <g fill="#3574b1">
+      <path d="M634 160V78H645V66H665V78H676V160Z"/>
+      <path d="M615 74Q615 43 655 42Q695 43 695 74Q655 94 615 74Z"/>
+      <path d="M615 70Q654 61 695 70L695 80Q655 99 615 80Z"/>
+      <rect x="652" y="17" width="6" height="25"/>
+      <rect x="648" y="151" width="14" height="12"/>
+    </g>
+  </svg>
+  <div class="footer-red"></div>
+</main>
+</body>
+</html>
